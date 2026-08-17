@@ -1,5 +1,6 @@
-from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
+
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class CharityProjectBase(BaseModel):
@@ -9,6 +10,7 @@ class CharityProjectBase(BaseModel):
     Содержит основные поля: name, description, full_amount.
     Используется как основа для создания и отображения.
     """
+
     model_config = ConfigDict(extra="forbid")
     name: str = Field(..., min_length=5, max_length=100)
     description: str = Field(..., min_length=10)
@@ -25,6 +27,7 @@ class CharityProjectUpdate(BaseModel):
 
     Все поля опциональны. Запрещены дополнительные поля.
     """
+
     model_config = ConfigDict(extra="forbid")
     name: str | None = Field(None, min_length=5, max_length=100)
     description: str | None = Field(None, min_length=10)
@@ -38,6 +41,7 @@ class CharityProjectDB(CharityProjectBase):
     Включает служебные поля: id, invested_amount, fully_invested,
     create_date, close_date.
     """
+
     id: int
     invested_amount: int
     fully_invested: bool

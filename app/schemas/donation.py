@@ -1,5 +1,6 @@
-from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
+
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class DonationBase(BaseModel):
@@ -9,6 +10,7 @@ class DonationBase(BaseModel):
     Содержит обязательное поле full_amount и опциональное comment.
     Используется как основа для создания и отображения.
     """
+
     model_config = ConfigDict(extra="forbid")
     full_amount: int = Field(..., gt=0)
     comment: str | None = None
@@ -25,6 +27,7 @@ class DonationCreateResponse(BaseModel):
     Возвращает только пользовательские поля, без служебных
     (invested_amount, fully_invested, close_date).
     """
+
     full_amount: int
     comment: str | None = None
     id: int
@@ -40,6 +43,7 @@ class DonationDB(DonationBase):
     Включает все поля, включая служебные:
     id, invested_amount, fully_invested, create_date, close_date.
     """
+
     id: int
     invested_amount: int
     fully_invested: bool
