@@ -14,9 +14,7 @@ class CRUDCharityProject(CRUDBase[
     CharityProjectCreate,
     CharityProjectUpdate
 ]):
-    """
-    CRUD-операции для модели CharityProject.
-    """
+    """CRUD-операции для модели CharityProject."""
 
     async def get_project_by_name(
         self,

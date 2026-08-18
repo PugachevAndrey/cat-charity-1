@@ -8,9 +8,7 @@ from pydantic import BaseModel
 
 
 class CRUDDonation(CRUDBase[Donation, DonationCreate, BaseModel]):
-    """
-    CRUD-операции для модели Donation.
-    """
+    """CRUD-операции для модели Donation."""
 
     async def get_uninvested_donations(
         self,

@@ -78,7 +78,54 @@ uvicorn app.main:app --reload
 http://127.0.0.1:8000/docs
 ```
 
-## Ссылки
+## Примеры
+
+Создание пожертвования
+```
+POST /donation/
+Content-Type: application/json
+```
+
+```
+{
+  "id": 1,
+  "full_amount": 5000,
+  "comment": "На корм для котиков",
+  "create_date": "2025-04-10T12:05:00"
+}
+```
+
+Получение списка всех пожертвований
+```
+GET /donation/
+```
+
+```
+[
+  {
+    "id": 1,
+    "full_amount": 5000,
+    "comment": "На корм для котиков",
+    "invested_amount": 0,
+    "fully_invested": false,
+    "create_date": "2025-04-10T12:05:00",
+    "close_date": null
+  }
+]
+```
+
+Пример ошибки (удаление проекта с инвестициями)
+```
+DELETE /charity_project/1
+```
+
+```
+{
+  "detail": "Нельзя удалить проект, в который уже инвестировали"
+}
+```
+
+## Автор проекта
 Разработчик: **Пугачев Андрей (https://github.com/PugachevAndrey)**
 
 ## Технологический стек
